@@ -1,0 +1,13 @@
+
+      <div class="form-group">
+        <label  class="head" for="exampleFormControlSelect1">Select branch</label>
+        <select class="form-control" id="id_branch" name="branch">
+          <option>Select Branch</option>
+          {% for branch in branches %}
+          <option value="{{branch}}">{{branch}}</option>
+          {% endfor %}
+          
+        </select>
+      </div>
+      
+      

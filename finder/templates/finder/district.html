@@ -1,0 +1,10 @@
+     
+      <div class="form-group">
+        <label class="head" for="exampleFormControlSelect1">Select district</label>
+        <select class="form-control" id="id_district" name="district">
+          <option>Select District</option>
+          {% for dist in district %}
+          <option value={{dist}}>{{dist}}</option>
+          {% endfor %}
+        </select>
+      </div>

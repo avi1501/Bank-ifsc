@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href='{% static "css/style1.css" %}' />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com" /> -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css"
+      integrity="sha384-wESLQ85D6gbsF459vf1CiZ2+rr+CsxRY0RpiF1tLlQpDnAgg6rwdsUF1+Ics2bni"
+      crossorigin="anonymous"
+    />
+    <title>BankiFSCCode.com</title>
+  </head>
+  <body>
+    <div id="main">
+      <div id="grad">
+        <div id="heading">
+          <div id="up">
+            <a id ="color1" href="{% url 'home' %}"><h3>Bank<span id="color">iFSC</span>.com</h3></a>
+            <div id="links">
+              <a class="glyph" href="{% url 'home' %}"
+                ><i id="icon" class="fas fa-home"></i
+              ></a>
+              <a class="glyph" href="{% url 'ifsc_data' %}">Search by IFSC</a>
+              <a class="glyph" href="{% url 'home' %}">Search by BANK</a>
+            </div>
+          </div>
+          <!-- <div id="line"></div> -->
+          <div id="down">
+            <div id="p">
+              <p>All India Bank Branch Address,IFSC, MICR Code Data</p>
+            </div>
+          </div>
+        </div>
+        <div id="flex">
+          <div id="side">
+            <p>
+              Indian Financial System Code (IFSC). It is used for electronic
+              payment applications like Real Time Gross Settlement (RTGS),
+              National Electronic Funds Transfer (NEFT), Immediate Payment
+              Service, an interbank electronic instant mobile money transfer
+              service (IMPS), and Centralised Funds Management System (CFMS)
+              developed by Reserve Bank of India (RBI). Code has eleven characters
+              "Alpha Numeric" in nature. First four characters represent bank,
+              fifth character is default "0" left for future use and last six
+              characters represent branch.<br><br> MICR Code: Magnetic Ink Character
+              Recognition as printed on cheque book to facilitate the processing
+              of cheques.
+            </p>
+          </div>
+          <div id="midas">{% block content %}{%endblock%}</div>
+          <div id="disc">
+            <p>
+              Disclaimer: - We have tried our best to keep the latest information
+              updated as available from RBI, users are requested to confirm
+              information with the respective bank before using the information
+              provided. The author reserves the right not to be responsible for
+              the topicality, correctness, completeness or quality of the
+              information provided. Liability claims regarding damage caused by
+              the use of any information provided, including any kind of
+              information which is incomplete or incorrect, will therefore be
+              rejected.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

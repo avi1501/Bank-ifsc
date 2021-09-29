@@ -1,0 +1,174 @@
+{% extends 'finder/base.html' %}
+
+{% block content %} 
+
+
+<di id ="first">
+    <form  method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+          <label class="head" for="exampleFormControlSelect1">Select Bank Name</label>
+          <select class="form-control" id="bank_code" name="bank_code">
+            <option >select Bank Name</option>
+            {% for data, code in all_bank.items %}
+                <option value = {{code}}>{{data}}</option>
+            {% endfor %}
+            
+          </select>
+        </div>
+</di>
+
+
+
+    {% include 'finder/state.html' %}
+    {% include 'finder/city.html' %}
+    {% include 'finder/district.html' %}
+    {% include 'finder/branch.html' %}
+    
+
+    
+
+    <button type="submit"id = "firstsubmit"> submit </button>
+
+</form>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$("#bank_code").change(function(){
+
+    var url = "{% url 'load_state' %}"
+    var bankId = $(this).val();    
+    $.ajax({
+        url:url,
+        data:{
+            'bank_code':bankId
+        },
+        success: function(data){
+            $("#id_state").html(data);
+        }
+    });
+});
+
+$("#id_state").change(function(){
+
+var url = "{% url 'load_city' %}"
+var bankId = $("#bank_code").val()
+var state = $(this).val();
+$.ajax({
+    url:url,
+    data:{
+        'bank_code':bankId,
+        'get_state':state
+    },
+    success: function(data){
+        $("#id_city").html(data);
+    }
+});
+});
+
+$("#id_city").change(function(){
+
+    var url = "{% url 'load_dist' %}"
+    var bankId = $("#bank_code").val()
+    var state = $("#id_state").val();
+    var city = $(this).val();
+
+    $.ajax({
+        url:url,
+        data:{
+            'bank_code':bankId,
+            'get_state':state,
+            'get_city':city,
+        },
+        success: function(data){
+            $("#id_district").html(data);
+            console.log(data);
+        }
+});
+});
+
+
+$("#id_district").change(function(){
+
+var url = "{% url 'load_branch' %}"
+var bankId = $("#bank_code").val()
+var state = $("#id_state").val();
+var city = $("#id_city").val();
+var district = $(this).val();
+
+$.ajax({
+    url:url,
+    data:{
+        'bank_code':bankId,
+        'get_state':state,
+        'get_city':city,
+        'get_dist': district,
+    },
+    success: function(data){
+        $("#id_branch").html(data);
+    }
+});
+});
+
+
+// $("#id_branch").change(function(){
+//     var url = "{% url 'home' %}"
+//     var bankId = $("#bank_code").val()
+//     var state = $("#id_state").val();
+//     var city = $("#id_city").val();
+//     var district = $("#id_district").val();
+//     var branch = $(this).val();
+//     var flag = true;
+
+//     $.ajax({
+//         url:url,
+        
+//         data:{
+//             'flag':flag,
+//             'bank_code':bankId,
+//             'get_state':state,
+//             'get_city':city,
+//             'get_dist': district,
+//             'get_branch':branch,
+//         },
+//         success:function(data){
+//             // $("#all_data").html(data)
+//         }
+//     })
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//   $(document).ready(function()
+//   {
+//     $bank_code = $("#bank_code");
+//       $itemvar = $("#id_state");
+
+//       $options = $itemvar.find('options');
+//       $bank_code.on('change',function(){
+//         var url = "{% url 'load_state' %}"
+        
+//       })
+
+//   }
+//   )
+
+</script>
+{% endblock %}
+

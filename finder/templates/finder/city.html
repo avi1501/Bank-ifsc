@@ -1,0 +1,24 @@
+<div class="form-group">
+    <label class="head"  for="exampleFormControlSelect1">Select City</label>
+    <select class="form-control" id="id_city" name="city">
+      <option>Enter City</option>
+
+      {% for city in cities %}
+        <option value="{{city}}">{{city}}</option>
+      {% endfor %}
+      
+    </select>
+
+  </div>
+  
+
+  <!-- <div class="form-group">
+    <label for="exampleFormControlSelect1">Select State</label>
+    <select class="form-control" id="id_state">
+        <option >Enter state</option>
+        {% for state in states %}
+      <option value={{state}}>{{ state }}</option>
+      {% endfor %}
+
+    </select>
+  </div> -->

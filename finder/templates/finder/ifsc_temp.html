@@ -1,0 +1,20 @@
+{% extends 'finder/base.html' %}
+
+{% block content %}
+
+
+{{error}}
+
+<div id="centrino">
+    <form action="{% url 'ifsc_data' %}" method="POST">
+
+  
+        {%csrf_token%}
+            <input type="text" id="inputb" name = "ifsc_code">
+            <button type = "submi " id="firstsubmit"> submit</button>
+        
+        
+        </form>
+</div>
+
+{% endblock %}
